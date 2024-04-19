@@ -75,6 +75,9 @@ export default function Alzheimer() {
                                 <img className="w-96 h-96" src="https://uxwing.com/wp-content/themes/uxwing/download/file-and-folder-type/file-upload-icon.png" />
                             ) : (
                                 <img
+
+
+                                
                                     className="mt-8 w-min h-96"
                                     src={`data:image/jpeg;base64,${leftImage}`}
                                     alt="Uploaded"
