@@ -4,7 +4,8 @@ import React from 'react'
 import { useState } from 'react';
 export default function Alzheimer() {
     const [userSelectedFile, setUserSelectedFile] = useState(null);
-    const tempurl = process.env.GOJORADIXURL;
+    const [inference , setInference] = useState("you will see the prediction here")
+
     const ACK = process.env.api_key;
     const [leftImage, setLeftImage] = useState<any>(null);
 
@@ -19,11 +20,12 @@ export default function Alzheimer() {
             return;
         } else {
             console.log("ran on process funciton")
+           
             const response = await axios({
                 method: "POST",
-                url: process.env.tempurl,
+                url: "https://detect.roboflow.com/mri-detection-synapse/1",
                 params: {
-                    api_key: process.env.ACK,
+                    api_key:"MDUmhShkcQTpnD7H6ZtL",
                 },
                 data: leftImage,
                 headers: {
@@ -33,6 +35,7 @@ export default function Alzheimer() {
 
             if (response.data) {
                 console.log("got response");
+                setInference(JSON.stringify(response.data))
             }
         }
     }
@@ -53,7 +56,7 @@ export default function Alzheimer() {
         reader.readAsDataURL(userSelectedFile);
     }
     return (
-        <div>
+        <div className="bg-white">
             <h1>image input box</h1>
             <div>
                 <div className="flex flex-row h-3/5 justify-between items-stretch py-10 px-10 space-x-20 ">
@@ -85,13 +88,13 @@ export default function Alzheimer() {
                             <h1>diagnosis Result</h1>
                         </div>
                         <div className="bg-slate-100 flex justify-center items-center  h-full border-black border-4 rounded-lg overflow-y-scroll ">
-                            {"random text"}
+                            {inference}
                         </div>
                     </div>
                 </div>
             </div>
 
-            
+
             <input
                 className="bg-slate-950 text-white w-30 px-4 py-2 rounded mx-4"
                 type="file"
