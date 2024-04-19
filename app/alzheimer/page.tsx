@@ -5,6 +5,7 @@ export default function Alzheimer() {
 
 
     const [userSelectedFile, setUserSelectedFile] = useState(null);
+    const [leftImage, setLeftImage] = useState<any>(null);
     function onFileChange(event: any) {
         setUserSelectedFile(event.target.files[0]);
         console.log(userSelectedFile)
@@ -19,6 +20,7 @@ export default function Alzheimer() {
             let base64Data = reader.result
             // @ts-ignore
             base64Data = base64Data.replace(/^data:image\/[a-z]+;base64,/, "");
+            setLeftImage(base64Data);
             console.log(base64Data)
 
         };
@@ -37,6 +39,18 @@ export default function Alzheimer() {
             <button onClick={onFileUpload}>
                 Process
             </button>
+
+            <div>
+                <div className="bg-slate-100 flex justify-center items-center py-5 h-full border-black border-4 rounded-lg">
+
+                    <img
+                        className="mt-8 w-min h-96"
+                        src={`data:image/jpeg;base64,${leftImage}`}
+                        alt="Uploaded"
+                    />
+
+                </div>
+            </div>
         </div>
     )
 }
