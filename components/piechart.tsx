@@ -22,15 +22,16 @@ type Props = {
 };
 
 const BarChartWithPredictions: React.FC<Props> = ({ predictions }) => {
-  return (
+  let count = 1;
   
+  return (
     <div className='flex flex-row'>
       {predictions.map(prediction => (
         <div key={prediction.detection_id} style={{ marginRight: '20px' }}>
-          <h2>Bar Chart - Confidence: {Math.round(prediction.confidence * 100)}%</h2>
+          <h2>Area {count++}: {Math.round(prediction.confidence * 100)}%</h2>
           <Bar
             data={{
-              labels: ['Confidence'],  // Just showing confidence, no 'Other' for bars
+              labels: ['Confidence'],
               datasets: [
                 {
                   label: 'Confidence',
@@ -44,8 +45,8 @@ const BarChartWithPredictions: React.FC<Props> = ({ predictions }) => {
             options={{
               scales: {
                 y: {
-                  min: 80,     // Starting at 0 for full effect
-                  max: 100,   // 100% as maximum
+                  min: 80,
+                  max: 100,
                 }
               },
               maintainAspectRatio: false

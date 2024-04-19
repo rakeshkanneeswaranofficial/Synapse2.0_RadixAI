@@ -13,7 +13,10 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger,
     navigationMenuTriggerStyle,
-} from  "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu"
+
+import Live from "@/components/live";
+
 
 
 
@@ -34,22 +37,16 @@ export function Topbar() {
                         <NavigationMenuTrigger>Select services</NavigationMenuTrigger>
                         <NavigationMenuContent>
                             <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-
-                                {/* <ListItem href="/pages/braintumerpage" title="Brain Tumer">
-                                    Detect Brain Tumer with LLMS and Yolov8 Model
-                                </ListItem> */}
                                 <ListItem href="/alzheimer" title="Alzheimer">
                                     Detect Alzheimer with LLMS and Yolov8 Model.
                                 </ListItem>
-
                             </ul>
                         </NavigationMenuContent>
                     </NavigationMenuItem>
-
-
                 </NavigationMenuList>
             </NavigationMenu>
-         
+            <Live></Live>
+
 
 
         </div>
