@@ -45,7 +45,7 @@ const BarChartWithPredictions: React.FC<Props> = ({ predictions }) => {
             options={{
               scales: {
                 y: {
-                  min: 80,
+                  min: 0,
                   max: 100,
                 }
               },

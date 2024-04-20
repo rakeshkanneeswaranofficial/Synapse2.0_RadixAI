@@ -224,9 +224,9 @@ export default function BrainTumor() {
           <div className="rounded-lg border-black border-4 text-xl bold font-mono font-bold bg-slate-100">
             <h1>diagnosis Result</h1>
           </div>
-          <div className="bg-slate-100 flex justify-center items-center  h-full border-black border-4 rounded-lg overflow-y-scroll ">
-            {inference}
-          </div>
+          <div className="bg-slate-100 flex h-screen border-black border-4 rounded-lg overflow-scroll">
+    {inference}
+</div>
 
         </div>
       </div>
@@ -246,7 +246,7 @@ export default function BrainTumor() {
         </h1></Button>
         {status && (
           <PDFDownloadLink document={<PDFile findings={inference} base64Data={leftImage} title="Brain Tumor Report" />} fileName="Report.pdf">
-            {({ loading }) => (loading ? <button>Loading doc</button> : <button>Download Now</button>)}
+            {({ loading }) => (loading ? <button>Loading doc</button> : <button className="text-white text-lg bg-black py-2 px-2 rounded-lg">Download Now</button>)}
           </PDFDownloadLink>
         )}
       </div>
